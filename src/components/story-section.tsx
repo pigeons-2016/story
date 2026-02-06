@@ -43,7 +43,7 @@ export default function StorySection() {
 
       <div className="max-w-2xl mx-auto relative z-10">
         <p className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-6 sm:mb-8 text-center">
-          The Tale of Two Pigeons 💕
+          The Tale of a Pigeon 💕
         </p>
 
         <div className="space-y-4 sm:space-y-6 text-foreground/80 leading-relaxed">
