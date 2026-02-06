@@ -3,11 +3,11 @@ import CountdownTimer from './components/countdown-timer'
 import StorySection from './components/story-section'
 import './App.css'
 
-export default function Home() {
+export default function App() {
   const [showStory, setShowStory] = useState(false)
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/10">
+    <main className="min-h-screen bg-linear-to-b from-background via-background to-secondary/10">
       <div className="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20">
         {showStory ? (
           <>

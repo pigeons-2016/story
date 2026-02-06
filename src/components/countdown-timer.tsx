@@ -1,5 +1,3 @@
-'use client'
-
 import { useEffect, useState } from 'react'
 
 type DisplayMode = 'breakdown' | 'minutes' | 'hours' | 'seconds'
@@ -181,7 +179,7 @@ export default function CountdownTimer() {
 
       {/* Decorative line */}
       <div className="mt-8 sm:mt-12 flex justify-center">
-        <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+        <div className="w-16 sm:w-20 h-1 bg-linear-to-r from-transparent via-primary to-transparent"></div>
       </div>
     </div>
   )
@@ -189,7 +187,7 @@ export default function CountdownTimer() {
 
 function CountdownBox({ label, value }: { label: string; value: number }) {
   return (
-    <div className="bg-gradient-to-br from-secondary/20 to-primary/5 rounded-lg p-4 sm:p-6 text-center">
+    <div className="bg-linear-to-br from-secondary/20 to-primary/5 rounded-lg p-4 sm:p-6 text-center">
       <div className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary mb-2">
         {String(value).padStart(2, '0')}
       </div>

@@ -1,2 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --color-background: oklch(98% 0.01 252);
+  --color-foreground: oklch(20% 0 0);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(20% 0 0);
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(20% 0 0);
+  --color-primary: oklch(55% 0.19 340);
+  --color-primary-foreground: oklch(100% 0 0);
+  --color-secondary: oklch(68% 0.15 15);
+  --color-secondary-foreground: oklch(20% 0 0);
+  --color-muted: oklch(93% 0 0);
+  --color-muted-foreground: oklch(55% 0 0);
+  --color-accent: oklch(50% 0.19 340);
+  --color-accent-foreground: oklch(100% 0 0);
+  --color-destructive: oklch(60% 0.21 0);
+  --color-destructive-foreground: oklch(98% 0 0);
+  --color-border: oklch(88% 0 0);
+  --color-input: oklch(93% 0 0);
+  --color-ring: oklch(55% 0.19 340);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
 
