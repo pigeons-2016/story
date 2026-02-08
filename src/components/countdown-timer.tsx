@@ -79,7 +79,7 @@ export default function CountdownTimer() {
       {/* Title */}
       <div className="text-center mb-6 sm:mb-8">
         <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">
-          Until Forever
+          Until Forever - And Beyond
         </h2>
         <p className="text-muted-foreground text-sm sm:text-base md:text-lg">April 4th, 2026</p>
       </div>
