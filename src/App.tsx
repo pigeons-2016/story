@@ -1,10 +1,35 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import CountdownTimer from './components/countdown-timer'
 import StorySection from './components/story-section'
+import TimelineSection from './components/timeline-section'
+import RomanticSection from './components/romantic-section'
+import AboutHerSection from './components/about-her-section'
 import './App.css'
 
 export default function App() {
   const [showStory, setShowStory] = useState(false)
+  const [activeTab, setActiveTab] = useState<'story' | 'romantic' | 'timeline' | 'about-her'>('story')
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  const toggleAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause()
+      } else {
+        audioRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  // Stop audio only when leaving story view
+  useEffect(() => {
+    if (audioRef.current && !showStory) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }, [showStory])
 
   return (
     <main className="min-h-screen bg-linear-to-b from-background via-background to-secondary/10 relative overflow-hidden">
@@ -21,8 +46,72 @@ export default function App() {
       <div className="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-12 md:py-20 relative z-10">
         {showStory ? (
           <>
+            {/* Tab Navigation */}
+            <div className="flex justify-center mb-6 sm:mb-8">
+              <div className="bg-card rounded-lg shadow-sm border border-border p-1 inline-flex gap-1 flex-wrap">
+                <button
+                  onClick={() => setActiveTab('story')}
+                  className={`px-4 sm:px-6 py-2 rounded-md font-semibold transition-all duration-200 text-sm sm:text-base ${
+                    activeTab === 'story'
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  📖 The Tale
+                </button>
+                <button
+                  onClick={() => setActiveTab('timeline')}
+                  className={`px-4 sm:px-6 py-2 rounded-md font-semibold transition-all duration-200 text-sm sm:text-base ${
+                    activeTab === 'timeline'
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  ⏳ The Timeline
+                </button>
+                <button
+                  onClick={() => setActiveTab('romantic')}
+                  className={`px-4 sm:px-6 py-2 rounded-md font-semibold transition-all duration-200 text-sm sm:text-base ${
+                    activeTab === 'romantic'
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  💕 The Feeling
+                </button>
+                <button
+                  onClick={() => setActiveTab('about-her')}
+                  className={`px-4 sm:px-6 py-2 rounded-md font-semibold transition-all duration-200 text-sm sm:text-base ${
+                    activeTab === 'about-her'
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  ✨ About Her
+                </button>
+              </div>
+            </div>
+
             {/* Story View */}
-            <StorySection />
+            {activeTab === 'story' && <StorySection />}
+
+            {/* Timeline View */}
+            {activeTab === 'timeline' && <TimelineSection />}
+
+            {/* Romantic/Song View */}
+            {activeTab === 'romantic' && (
+              <RomanticSection 
+                isPlaying={isPlaying} 
+                toggleAudio={toggleAudio}
+              />
+            )}
+
+            {/* About Her View */}
+            {activeTab === 'about-her' && <AboutHerSection />}
+            
+            {/* Hidden Audio Element - persists across all tabs */}
+            <audio ref={audioRef} src="/story/feeling.mp3" loop />
+            
             <div className="mt-8 sm:mt-12 flex justify-center">
               <button
                 onClick={() => setShowStory(false)}

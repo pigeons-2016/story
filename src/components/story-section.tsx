@@ -75,7 +75,7 @@ export default function StorySection() {
             className="px-6 sm:px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-full hover:bg-primary/90 transition-all duration-200 text-sm sm:text-base shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center gap-2"
           >
             <span>💕</span>
-            <span>Click To See Pigeons</span>
+            <span>Tap To See Pigeons</span>
             <span>💕</span>
           </button>
         </div>
